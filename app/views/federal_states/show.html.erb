@@ -1,18 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Country:</strong>
-  <%= @federal_state.country_id %>
+  <%= @federal_state.country %>
 </p>
 
 <p>
   <strong>Name:</strong>
   <%= @federal_state.name %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @federal_state.slug %>
 </p>
 
 <%= link_to 'Edit', edit_federal_state_path(@federal_state) %> |

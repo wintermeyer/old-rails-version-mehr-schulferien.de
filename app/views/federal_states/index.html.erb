@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Federal States</h1>
 
 <table class="u-full-width">
@@ -7,7 +5,6 @@
     <tr>
       <th>Country</th>
       <th>Name</th>
-      <th>Slug</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +12,8 @@
   <tbody>
     <% @federal_states.each do |federal_state| %>
       <tr>
-        <td><%= federal_state.country_id %></td>
+        <td><%= federal_state.country %></td>
         <td><%= federal_state.name %></td>
-        <td><%= federal_state.slug %></td>
         <td><%= link_to 'Show', federal_state %></td>
         <td><%= link_to 'Edit', edit_federal_state_path(federal_state) %></td>
         <td><%= link_to 'Destroy', federal_state, method: :delete, data: { confirm: 'Are you sure?' } %></td>

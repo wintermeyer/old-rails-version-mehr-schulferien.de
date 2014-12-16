@@ -1,9 +1,12 @@
 class FederalStatesController < ApplicationController
-  before_action :set_federal_state, only: [:show, :edit, :update, :destroy]
+  before_action :set_and_authorize_federal_state, only: [:show, :edit, :update, :destroy]
+
+  after_filter :verify_authorized,  except: :index
+  after_filter :verify_policy_scoped, only: :index
 
   # GET /federal_states
   def index
-    @federal_states = FederalState.all
+    @federal_states = policy_scope(FederalState.all)
   end
 
   # GET /federal_states/1
@@ -13,6 +16,7 @@ class FederalStatesController < ApplicationController
   # GET /federal_states/new
   def new
     @federal_state = FederalState.new
+    authorize @federal_state, :new?
   end
 
   # GET /federal_states/1/edit
@@ -22,6 +26,7 @@ class FederalStatesController < ApplicationController
   # POST /federal_states
   def create
     @federal_state = FederalState.new(federal_state_params)
+    authorize @federal_state, :create?
 
     if @federal_state.save
       redirect_to @federal_state, notice: 'Federal state was successfully created.'
@@ -47,8 +52,9 @@ class FederalStatesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_federal_state
-      @federal_state = FederalState.find(params[:id])
+    def set_and_authorize_federal_state
+      @federal_state = FederalState.friendly.find(params[:id])
+      authorize @federal_state, "#{action_name}?".to_sym
     end
 
     # Only allow a trusted parameter "white list" through.

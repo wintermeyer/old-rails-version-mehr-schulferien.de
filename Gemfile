@@ -46,3 +46,4 @@ end
 gem 'friendly_id', '~> 5.0.0'
 gem 'factory_girl_rails'
 gem 'omniauth-facebook'
+gem 'pundit'

@@ -1,5 +1,13 @@
 class User < ActiveRecord::Base
 
+  # TODO Fix the admin? method for the User model
+  def admin?
+    if self == User.first
+      true
+    else
+      false
+    end
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

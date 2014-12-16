@@ -1,9 +1,12 @@
 class CountriesController < ApplicationController
-  before_action :set_country, only: [:show, :edit, :update, :destroy]
+  before_action :set_and_authorize_country, only: [:show, :edit, :update, :destroy]
+
+  after_filter :verify_authorized,  except: :index
+  after_filter :verify_policy_scoped, only: :index
 
   # GET /countries
   def index
-    @countries = Country.all
+    @countries = policy_scope(Country.all)
   end
 
   # GET /countries/1
@@ -13,6 +16,7 @@ class CountriesController < ApplicationController
   # GET /countries/new
   def new
     @country = Country.new
+    authorize @country, :new?
   end
 
   # GET /countries/1/edit
@@ -22,6 +26,7 @@ class CountriesController < ApplicationController
   # POST /countries
   def create
     @country = Country.new(country_params)
+    authorize @country, :create?
 
     if @country.save
       redirect_to @country, notice: 'Country was successfully created.'
@@ -47,8 +52,9 @@ class CountriesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_country
-      @country = Country.find(params[:id])
+    def set_and_authorize_country
+      @country = Country.friendly.find(params[:id])
+      authorize @country, "#{action_name}?".to_sym
     end
 
     # Only allow a trusted parameter "white list" through.
