@@ -1,4 +1,4 @@
-<%= form_for(@country) do |f| %>
+<%= form_for @country, html: { class: "pure-form pure-form-aligned" } do |f| %>
   <% if @country.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <fieldset>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
+  </fieldset>
+  <fieldset>
     <%= f.label :url_prefix %><br>
     <%= f.text_field :url_prefix %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </fieldset>
+  <fieldset>
+    <%= f.submit class: "pure-button pure-button-primary" %>
+  </fieldset>
 <% end %>

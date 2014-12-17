@@ -9,17 +9,18 @@ class Country < ActiveRecord::Base
   # Validations
   #
   validates :name,
-            presence: true,
-            uniqueness: true
+            presence: true
 
   validates :url_prefix,
             presence: true,
             uniqueness: true,
             length: { in: 1..3 },
             format: { with: /\A[a-z]+\z/,
-                      message: "only allows lowercase letters" }
+              message: "only allows lowercase letters" }
+
 
   def to_s
-    name
+    name.to_s
   end
+
 end

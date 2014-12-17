@@ -8,11 +8,15 @@ class FederalState < ActiveRecord::Base
 
   # Validations
   #
+  validates :country,
+            presence: true
+
   validates :name,
-            presence: true,
-            uniqueness: { scope: :country }
+            presence: true
+
 
   def to_s
-    name
+    name.to_s
   end
+
 end

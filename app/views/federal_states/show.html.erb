@@ -1,12 +1,12 @@
-<p>
-  <strong>Country:</strong>
-  <%= @federal_state.country %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @federal_state.name %>
-</p>
-
-<%= link_to 'Edit', edit_federal_state_path(@federal_state) %> |
-<%= link_to 'Back', federal_states_path %>
+<table class="pure-table pure-table-horizontal">
+  <tbody>
+    <tr>
+      <td><strong>Country:</strong></td>
+      <td><%= @federal_state.country %></td>
+    </tr>
+    <tr>
+      <td><strong>Name:</strong></td>
+      <td><%= @federal_state.name %></td>
+    </tr>
+  </tbody>
+</table>

@@ -14,9 +14,9 @@
       <tr>
         <td><%= country.name %></td>
         <td><%= country.url_prefix %></td>
-        <td><%= link_to 'Show', country %></td>
-        <td><%= link_to 'Edit', edit_country_path(country) %></td>
-        <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', country, class: policy(country).show? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+        <td><%= link_to 'Edit', edit_country_path(country), class: policy(country).edit? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+        <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' }, class: policy(country).destroy? ? 'pure-button':'pure-button pure-button-disabled' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Country', new_country_path %>
+<%= link_to 'New Country', new_country_path, class: policy(Country.new).new? ? 'pure-button':'pure-button pure-button-disabled' %>

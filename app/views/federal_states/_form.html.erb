@@ -1,4 +1,4 @@
-<%= form_for(@federal_state) do |f| %>
+<%= form_for @federal_state, html: { class: "pure-form pure-form-aligned" } do |f| %>
   <% if @federal_state.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@federal_state.errors.count, "error") %> prohibited this federal_state from being saved:</h2>
@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <fieldset>
     <%= f.label :country_id %><br>
-    <%= f.number_field :country_id %>
-  </div>
-  <div class="field">
+    <%= f.text_field :country_id %>
+  </fieldset>
+  <fieldset>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </fieldset>
+  <fieldset>
+    <%= f.submit class: "pure-button pure-button-primary" %>
+  </fieldset>
 <% end %>

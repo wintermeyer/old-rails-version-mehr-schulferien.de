@@ -1,12 +1,12 @@
-<p>
-  <strong>Name:</strong>
-  <%= @country.name %>
-</p>
-
-<p>
-  <strong>Url prefix:</strong>
-  <%= @country.url_prefix %>
-</p>
-
-<%= link_to 'Edit', edit_country_path(@country) %> |
-<%= link_to 'Back', countries_path %>
+<table class="pure-table pure-table-horizontal">
+  <tbody>
+    <tr>
+      <td><strong>Name:</strong></td>
+      <td><%= @country.name %></td>
+    </tr>
+    <tr>
+      <td><strong>Url prefix:</strong></td>
+      <td><%= @country.url_prefix %></td>
+    </tr>
+  </tbody>
+</table>
