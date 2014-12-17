@@ -1,0 +1,21 @@
+<div class="header">
+  <div class="pure-menu pure-menu-open pure-menu-horizontal">
+    <%= link_to 'Mehr Schulferien', root_path, class: 'pure-menu-heading' %>
+    <ul>
+      <li><%= link_to 'countries', countries_path, :class => current_page?(countries_path) ? "pure-menu-selected" : "" %></li>
+      <li><%= link_to 'federal_states', federal_states_path, :class => current_page?(federal_states_path) ? "pure-menu-selected" : "" %></li>
+      <% if current_user %>
+      <li>
+        Signed in as <strong><%= current_user.name %></strong>.
+      </li>
+      <li>
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

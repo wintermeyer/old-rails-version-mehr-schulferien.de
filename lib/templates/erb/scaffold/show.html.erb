@@ -1,4 +1,4 @@
-<table>
+<table class="pure-table pure-table-horizontal">
   <tbody>
 <% attributes.reject(&:password_digest?).reject { |attribute| ['slug'].include?(attribute.name) }.each do |attribute| -%>
     <tr>

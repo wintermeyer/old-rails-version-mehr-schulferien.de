@@ -1,6 +1,6 @@
 <h1>Listing <%= plural_table_name.titleize %></h1>
 
-<table>
+<table class="pure-table pure-table-horizontal">
   <thead>
     <tr>
 <% attributes.reject(&:password_digest?).reject { |attribute| ['slug'].include?(attribute.name) }.each do |attribute| -%>
@@ -16,9 +16,9 @@
 <% attributes.reject(&:password_digest?).reject { |attribute| ['slug'].include?(attribute.name) }.each do |attribute| -%>
         <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
 <% end -%>
-        <td><%%= link_to 'Show', <%= singular_table_name %> if policy(<%= singular_table_name %>).show? %></td>
-        <td><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>) if policy(<%= singular_table_name %>).edit? %></td>
-        <td><%%= link_to 'Destroy', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } if policy(<%= singular_table_name %>).destroy? %></td>
+        <td><%%= link_to 'Show', <%= singular_table_name %>, class: policy(<%= singular_table_name %>).show? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+        <td><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: policy(<%= singular_table_name %>).edit? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+        <td><%%= link_to 'Destroy', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' }, class: policy(<%= singular_table_name %>).destroy? ? 'pure-button':'pure-button pure-button-disabled' %></td>
       </tr>
     <%% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%%= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path if policy(<%= singular_table_name.classify %>.new).create? %>
+<%%= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path, class: policy(<%= singular_table_name.classify %>.new).new? ? 'pure-button':'pure-button pure-button-disabled' %>
