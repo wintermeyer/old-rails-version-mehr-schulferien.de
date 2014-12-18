@@ -11,9 +11,11 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   def index
     @<%= plural_table_name %> = policy_scope(<%= orm_class.all(class_name) %>)
+    fresh_when etag: [I18n.locale, current_user, cache_key_for_all(<%= singular_table_name.classify %>)]
   end
 
   def show
+    fresh_when etag: [I18n.locale, current_user, @<%= singular_table_name %>]
   end
 
   def new

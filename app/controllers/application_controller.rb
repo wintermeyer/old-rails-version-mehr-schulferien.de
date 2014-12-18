@@ -6,7 +6,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  
+
+  # Generate a cache key for all elements of a given
+  # Class.
+  #
+  def cache_key_for_all(value)
+    count          = value.to_s.classify.constantize.count
+    max_updated_at = value.to_s.classify.constantize.maximum(:updated_at).try(:utc).try(:to_s, :number)
+    "#{value.to_s.tableize}/all-#{count}-#{max_updated_at}"
+  end
+  helper_method :cache_key_for_all
+
   private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

@@ -1,10 +1,12 @@
-<table class="pure-table pure-table-horizontal">
-  <tbody>
-<% attributes.reject(&:password_digest?).reject { |attribute| ['slug'].include?(attribute.name) }.each do |attribute| -%>
-    <tr>
-      <td><strong><%= attribute.human_name %>:</strong></td>
-      <td><%%= @<%= singular_table_name %>.<%= attribute.name %> %></td>
-    </tr>
-<% end -%>
-  </tbody>
-</table>
+<%% cache [I18n.locale, current_user, @<%= @singular_table_name %>] do %>
+  <table class="pure-table pure-table-horizontal">
+    <tbody>
+  <% attributes.reject(&:password_digest?).reject { |attribute| ['slug'].include?(attribute.name) }.each do |attribute| -%>
+      <tr>
+        <td><strong><%= attribute.human_name %>:</strong></td>
+        <td><%%= @<%= singular_table_name %>.<%= attribute.name %> %></td>
+      </tr>
+  <% end -%>
+    </tbody>
+  </table>
+<%% end %>
