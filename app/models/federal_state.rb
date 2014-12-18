@@ -12,7 +12,9 @@ class FederalState < ActiveRecord::Base
             presence: true
 
   validates :name,
-            presence: true
+            presence: true,
+            uniqueness: { scope: :country,
+                          message: "should be unique per country" }
 
 
   def to_s
