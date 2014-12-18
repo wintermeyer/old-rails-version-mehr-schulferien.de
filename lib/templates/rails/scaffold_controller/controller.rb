@@ -51,8 +51,12 @@ class <%= controller_class_name %>Controller < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_and_authorize_<%= singular_table_name %>
-      @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
-      authorize @<%= singular_table_name %>, "#{action_name}?".to_sym
+      <% if attributes.map(&:name).include? 'slug' -%>
+@<%= singular_table_name %> = <%= "#{orm_class.find(class_name, "params[:id]").gsub(/.find/, '.friendly.find')}" %>
+      <% else -%>
+@<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+      <% end -%>
+authorize @<%= singular_table_name %>, "#{action_name}?".to_sym
     end
 
     # Only allow a trusted parameter "white list" through.
