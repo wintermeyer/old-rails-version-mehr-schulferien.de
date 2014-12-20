@@ -1,0 +1,10 @@
+<% cache [I18n.locale, current_user, @holiday] do %>
+  <table class="pure-table pure-table-horizontal">
+    <tbody>
+        <tr>
+        <td><strong>Name:</strong></td>
+        <td><%= @holiday.name %></td>
+      </tr>
+      </tbody>
+  </table>
+<% end %>

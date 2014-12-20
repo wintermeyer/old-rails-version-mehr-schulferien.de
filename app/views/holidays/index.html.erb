@@ -1,0 +1,27 @@
+<% cache [I18n.locale, current_user, cache_key_for_all(Holiday)] do %>
+  <h1>Listing Holidays</h1>
+
+  <table class="pure-table pure-table-horizontal">
+    <thead>
+      <tr>
+          <th>Name</th>
+          <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @holidays.each do |holiday| %>
+        <tr>
+            <td><%= holiday.name %></td>
+            <td><%= link_to 'Show', holiday, class: policy(holiday).show? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+          <td><%= link_to 'Edit', edit_holiday_path(holiday), class: policy(holiday).edit? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+          <td><%= link_to 'Destroy', holiday, method: :delete, data: { confirm: 'Are you sure?' }, class: policy(holiday).destroy? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Holiday', new_holiday_path, class: policy(Holiday.new).new? ? 'pure-button':'pure-button pure-button-disabled' %>
+<% end %>

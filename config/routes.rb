@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :holidays
+
   get 'page/index'
 
   get 'auth/:provider/callback', to: 'sessions#create'
