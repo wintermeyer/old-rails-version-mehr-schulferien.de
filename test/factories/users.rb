@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :user do
-    provider "MyString"
-uid "MyString"
-name "MyString"
-oauth_token "MyString"
-oauth_expires_at "2014-12-15 11:08:34"
+    provider "TestProvider"
+    sequence(:uid) { |n| "123#{n}" }
+    name "Mr. Example"
+    sequence(:oauth_token) { |n| "iojwfwiujksfj2#{n}" }
+    oauth_expires_at Time.now + 3.months
   end
 
 end

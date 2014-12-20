@@ -33,6 +33,8 @@ class CountryTest < ActiveSupport::TestCase
   test "should not save the same country twice" do
     country1 = FactoryGirl.build(:country)
     country2 = FactoryGirl.build(:country)
+    country2.name = country1.name
+    country2.url_prefix = country1.url_prefix
     assert country1.save
     assert_not country2.save
   end

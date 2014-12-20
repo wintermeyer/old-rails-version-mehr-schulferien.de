@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :country do
-    name "Germany"
-    url_prefix "de"
+    sequence(:name) { |n| "Example Country #{n}" }
+    sequence(:url_prefix) { |n| ('a'..'zz').to_a[n] }
   end
 end

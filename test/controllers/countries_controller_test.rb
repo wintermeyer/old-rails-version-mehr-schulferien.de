@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class CountriesControllerTest < ActionController::TestCase
+  # TODO Write tests for anonymous user.
+  
   setup do
-    @country = countries(:one)
+    @country = FactoryGirl.build(:country)
+    @user = FactoryGirl.build(:user)
+    @user.save
+    session[:user_id] = @user.id
   end
 
   test "should get index" do
@@ -18,30 +23,34 @@ class CountriesControllerTest < ActionController::TestCase
 
   test "should create country" do
     assert_difference('Country.count') do
-      post :create, country: { name: @country.name, slug: @country.slug, url_prefix: @country.url_prefix }
+      post :create, country: { name: @country.name, url_prefix: @country.url_prefix }
     end
 
     assert_redirected_to country_path(assigns(:country))
   end
 
   test "should show country" do
-    get :show, id: @country
+    @country.save
+    get :show, id: @country.slug
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @country
+    @country.save
+    get :edit, id: @country.save
     assert_response :success
   end
 
   test "should update country" do
-    patch :update, id: @country, country: { name: @country.name, slug: @country.slug, url_prefix: @country.url_prefix }
+    @country.save
+    patch :update, id: @country, country: { name: @country.name, url_prefix: @country.url_prefix }
     assert_redirected_to country_path(assigns(:country))
   end
 
   test "should destroy country" do
+    @country.save
     assert_difference('Country.count', -1) do
-      delete :destroy, id: @country
+      delete :destroy, id: @country.slug
     end
 
     assert_redirected_to countries_path
