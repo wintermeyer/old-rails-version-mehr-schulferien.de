@@ -1,0 +1,18 @@
+<% cache [I18n.locale, current_user, @city] do %>
+  <table class="pure-table pure-table-horizontal">
+    <tbody>
+        <tr>
+        <td><strong>Name:</strong></td>
+        <td><%= @city.name %></td>
+      </tr>
+        <tr>
+        <td><strong>Zip code:</strong></td>
+        <td><%= @city.zip_code %></td>
+      </tr>
+        <tr>
+        <td><strong>Federal state:</strong></td>
+        <td><%= @city.federal_state %></td>
+      </tr>
+      </tbody>
+  </table>
+<% end %>

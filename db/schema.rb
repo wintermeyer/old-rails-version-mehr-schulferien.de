@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222160913) do
+ActiveRecord::Schema.define(version: 20150103152934) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "zip_code"
+    t.integer  "federal_state_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "cities", ["federal_state_id"], name: "index_cities_on_federal_state_id"
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"

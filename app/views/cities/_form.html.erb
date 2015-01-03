@@ -1,0 +1,29 @@
+<%= form_for @city, html: { class: "pure-form pure-form-aligned" } do |f| %>
+  <% if @city.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@city.errors.count, "error") %> prohibited this city from being saved:</h2>
+
+      <ul>
+      <% @city.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :zip_code %><br>
+    <%= f.text_field :zip_code %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :federal_state_id %><br>
+    <%= f.text_field :federal_state_id %>
+  </fieldset>
+  <fieldset>
+    <%= f.submit class: "pure-button pure-button-primary" %>
+  </fieldset>
+<% end %>
