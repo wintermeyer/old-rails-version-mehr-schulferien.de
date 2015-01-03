@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :periods
+
   resources :holidays
 
   get 'page/index'

@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141220115241) do
+ActiveRecord::Schema.define(version: 20141222160913) do
 
-  create_table "countries", force: true do |t|
+  create_table "countries", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
     t.string   "url_prefix"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20141220115241) do
   add_index "countries", ["slug"], name: "index_countries_on_slug", unique: true
   add_index "countries", ["url_prefix"], name: "index_countries_on_url_prefix", unique: true
 
-  create_table "federal_states", force: true do |t|
+  create_table "federal_states", force: :cascade do |t|
     t.integer  "country_id"
     t.string   "name"
     t.string   "slug"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141220115241) do
 
   add_index "federal_states", ["slug"], name: "index_federal_states_on_slug", unique: true
 
-  create_table "friendly_id_slugs", force: true do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
@@ -47,14 +47,27 @@ ActiveRecord::Schema.define(version: 20141220115241) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
-  create_table "holidays", force: true do |t|
+  create_table "holidays", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: true do |t|
+  create_table "periods", force: :cascade do |t|
+    t.date     "first_day"
+    t.date     "last_day"
+    t.integer  "holiday_id"
+    t.integer  "periodable_id"
+    t.string   "periodable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "periods", ["holiday_id"], name: "index_periods_on_holiday_id"
+  add_index "periods", ["periodable_type", "periodable_id"], name: "index_periods_on_periodable_type_and_periodable_id"
+
+  create_table "users", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
     t.string   "name"

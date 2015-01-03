@@ -2,7 +2,7 @@ require 'test_helper'
 
 class FederalStatesControllerTest < ActionController::TestCase
   # TODO Write tests for anonymous user.
-  
+
   setup do
     @federal_state = FactoryGirl.build(:federal_state)
     @user = FactoryGirl.build(:user)

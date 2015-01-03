@@ -1,0 +1,33 @@
+<% cache [I18n.locale, current_user, cache_key_for_all(Period)] do %>
+  <h1>Listing Periods</h1>
+
+  <table class="pure-table pure-table-horizontal">
+    <thead>
+      <tr>
+          <th>First day</th>
+          <th>Last day</th>
+          <th>Holiday</th>
+          <th>Periodable</th>
+          <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @periods.each do |period| %>
+        <tr>
+            <td><%= period.first_day %></td>
+            <td><%= period.last_day %></td>
+            <td><%= period.holiday %></td>
+            <td><%= period.periodable %></td>
+            <td><%= link_to 'Show', period, class: policy(period).show? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+          <td><%= link_to 'Edit', edit_period_path(period), class: policy(period).edit? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+          <td><%= link_to 'Destroy', period, method: :delete, data: { confirm: 'Are you sure?' }, class: policy(period).destroy? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Period', new_period_path, class: policy(Period.new).new? ? 'pure-button':'pure-button pure-button-disabled' %>
+<% end %>

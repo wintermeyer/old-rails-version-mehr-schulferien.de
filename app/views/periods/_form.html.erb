@@ -1,0 +1,33 @@
+<%= form_for @period, html: { class: "pure-form pure-form-aligned" } do |f| %>
+  <% if @period.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@period.errors.count, "error") %> prohibited this period from being saved:</h2>
+
+      <ul>
+      <% @period.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= f.label :first_day %><br>
+    <%= f.date_select :first_day %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :last_day %><br>
+    <%= f.date_select :last_day %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :holiday_id %><br>
+    <%= f.text_field :holiday_id %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :periodable_id %><br>
+    <%= f.text_field :periodable_id %>
+  </fieldset>
+  <fieldset>
+    <%= f.submit class: "pure-button pure-button-primary" %>
+  </fieldset>
+<% end %>

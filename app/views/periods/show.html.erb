@@ -1,0 +1,22 @@
+<% cache [I18n.locale, current_user, @period] do %>
+  <table class="pure-table pure-table-horizontal">
+    <tbody>
+        <tr>
+        <td><strong>First day:</strong></td>
+        <td><%= @period.first_day %></td>
+      </tr>
+        <tr>
+        <td><strong>Last day:</strong></td>
+        <td><%= @period.last_day %></td>
+      </tr>
+        <tr>
+        <td><strong>Holiday:</strong></td>
+        <td><%= @period.holiday %></td>
+      </tr>
+        <tr>
+        <td><strong>Periodable:</strong></td>
+        <td><%= @period.periodable %></td>
+      </tr>
+      </tbody>
+  </table>
+<% end %>

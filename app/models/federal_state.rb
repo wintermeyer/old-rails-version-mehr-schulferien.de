@@ -5,6 +5,7 @@ class FederalState < ActiveRecord::Base
   # Associations
   #
   belongs_to :country, touch: true
+  has_many :periods, as: :periodable, dependent: :destroy
 
   # Validations
   #

@@ -5,7 +5,8 @@ class Country < ActiveRecord::Base
   # Associations
   #
   has_many :federal_states, dependent: :destroy
-
+  has_many :periods, as: :periodable, dependent: :destroy
+  
   # Validations
   #
   validates :name,
