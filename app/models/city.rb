@@ -5,6 +5,7 @@ class City < ActiveRecord::Base
   # Associations
   #
   belongs_to :federal_state, touch: true
+  has_many :schools, dependent: :destroy
 
   # Validations
   #

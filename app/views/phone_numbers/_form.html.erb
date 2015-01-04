@@ -1,0 +1,29 @@
+<%= form_for @phone_number, html: { class: "pure-form pure-form-aligned" } do |f| %>
+  <% if @phone_number.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@phone_number.errors.count, "error") %> prohibited this phone_number from being saved:</h2>
+
+      <ul>
+      <% @phone_number.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :value %><br>
+    <%= f.text_field :value %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :phone_numberable_id %><br>
+    <%= f.text_field :phone_numberable_id %>
+  </fieldset>
+  <fieldset>
+    <%= f.submit class: "pure-button pure-button-primary" %>
+  </fieldset>
+<% end %>

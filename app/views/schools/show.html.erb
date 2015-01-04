@@ -1,0 +1,42 @@
+<% cache [I18n.locale, current_user, @school] do %>
+  <table class="pure-table pure-table-horizontal">
+    <tbody>
+        <tr>
+        <td><strong>Name:</strong></td>
+        <td><%= @school.name %></td>
+      </tr>
+        <tr>
+        <td><strong>Address line1:</strong></td>
+        <td><%= @school.address_line1 %></td>
+      </tr>
+        <tr>
+        <td><strong>Address line2:</strong></td>
+        <td><%= @school.address_line2 %></td>
+      </tr>
+        <tr>
+        <td><strong>Street:</strong></td>
+        <td><%= @school.street %></td>
+      </tr>
+        <tr>
+        <td><strong>Zip code:</strong></td>
+        <td><%= @school.zip_code %></td>
+      </tr>
+        <tr>
+        <td><strong>Address city name:</strong></td>
+        <td><%= @school.address_city_name %></td>
+      </tr>
+        <tr>
+        <td><strong>Email address:</strong></td>
+        <td><%= @school.email_address %></td>
+      </tr>
+        <tr>
+        <td><strong>Homepage url:</strong></td>
+        <td><%= @school.homepage_url %></td>
+      </tr>
+        <tr>
+        <td><strong>City:</strong></td>
+        <td><%= @school.city %></td>
+      </tr>
+      </tbody>
+  </table>
+<% end %>

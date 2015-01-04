@@ -7,6 +7,7 @@ class FederalState < ActiveRecord::Base
   belongs_to :country, touch: true
   has_many :periods, as: :periodable, dependent: :destroy
   has_many :cities, dependent: :destroy
+  has_many :schools, through: :cities
 
   # Validations
   #

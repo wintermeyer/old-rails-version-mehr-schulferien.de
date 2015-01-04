@@ -1,0 +1,31 @@
+<% cache [I18n.locale, current_user, cache_key_for_all(PhoneNumber)] do %>
+  <h1>Listing Phone Numbers</h1>
+
+  <table class="pure-table pure-table-horizontal">
+    <thead>
+      <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Phone numberable</th>
+          <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @phone_numbers.each do |phone_number| %>
+        <tr>
+            <td><%= phone_number.name %></td>
+            <td><%= phone_number.value %></td>
+            <td><%= phone_number.phone_numberable %></td>
+            <td><%= link_to 'Show', phone_number, class: policy(phone_number).show? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+          <td><%= link_to 'Edit', edit_phone_number_path(phone_number), class: policy(phone_number).edit? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+          <td><%= link_to 'Destroy', phone_number, method: :delete, data: { confirm: 'Are you sure?' }, class: policy(phone_number).destroy? ? 'pure-button':'pure-button pure-button-disabled' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Phone number', new_phone_number_path, class: policy(PhoneNumber.new).new? ? 'pure-button':'pure-button pure-button-disabled' %>
+<% end %>

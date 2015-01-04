@@ -26,3 +26,11 @@ germany.federal_states.create([
 require Rails.root.join('db','seeds.d','default-holidays.rb')
 require Rails.root.join('db','seeds.d','default-periods.rb')
 require Rails.root.join('db','seeds.d','default-cities.rb')
+
+# Loads schools
+#
+if Dir.exist?(Rails.root.join('db','seeds.d','schools.d'))
+  Dir.glob(Rails.root.join('db','seeds.d','schools.d','*.rb')).each do |seed_file|
+    require seed_file
+  end
+end

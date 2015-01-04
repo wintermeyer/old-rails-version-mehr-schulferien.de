@@ -1,0 +1,18 @@
+<% cache [I18n.locale, current_user, @phone_number] do %>
+  <table class="pure-table pure-table-horizontal">
+    <tbody>
+        <tr>
+        <td><strong>Name:</strong></td>
+        <td><%= @phone_number.name %></td>
+      </tr>
+        <tr>
+        <td><strong>Value:</strong></td>
+        <td><%= @phone_number.value %></td>
+      </tr>
+        <tr>
+        <td><strong>Phone numberable:</strong></td>
+        <td><%= @phone_number.phone_numberable %></td>
+      </tr>
+      </tbody>
+  </table>
+<% end %>

@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :period do
     sequence(:first_day) { |n| Date.today + (7 * n).days }
-    sequence(:last_day) { |n| Date.today + (7.1 * n).round.days }
+    sequence(:last_day) { |n| Date.today + ((7.1 * n) + n).round.days }
 
     holiday
     association :periodable, factory: :federal_state

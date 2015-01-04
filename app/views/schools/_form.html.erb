@@ -1,0 +1,53 @@
+<%= form_for @school, html: { class: "pure-form pure-form-aligned" } do |f| %>
+  <% if @school.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@school.errors.count, "error") %> prohibited this school from being saved:</h2>
+
+      <ul>
+      <% @school.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :address_line1 %><br>
+    <%= f.text_field :address_line1 %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :address_line2 %><br>
+    <%= f.text_field :address_line2 %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :street %><br>
+    <%= f.text_field :street %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :zip_code %><br>
+    <%= f.text_field :zip_code %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :address_city_name %><br>
+    <%= f.text_field :address_city_name %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :email_address %><br>
+    <%= f.text_field :email_address %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :homepage_url %><br>
+    <%= f.text_field :homepage_url %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :city_id %><br>
+    <%= f.text_field :city_id %>
+  </fieldset>
+  <fieldset>
+    <%= f.submit class: "pure-button pure-button-primary" %>
+  </fieldset>
+<% end %>

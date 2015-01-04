@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150103152934) do
+ActiveRecord::Schema.define(version: 20150103171456) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -77,6 +77,32 @@ ActiveRecord::Schema.define(version: 20150103152934) do
 
   add_index "periods", ["holiday_id"], name: "index_periods_on_holiday_id"
   add_index "periods", ["periodable_type", "periodable_id"], name: "index_periods_on_periodable_type_and_periodable_id"
+
+  create_table "phone_numbers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.integer  "phone_numberable_id"
+    t.string   "phone_numberable_type"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "street"
+    t.string   "zip_code"
+    t.string   "address_city_name"
+    t.string   "email_address"
+    t.string   "homepage_url"
+    t.integer  "city_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "schools", ["city_id"], name: "index_schools_on_city_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"
